@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+//함수 선언
+void p(int num); 
+
+int main(void){
+    int num = 2;
+    //printf("num은 %d입니다.\n", num); // 2
+    p(num); //함수 호출
+
+    num += 3;
+    //printf("num은 %d입니다.\n", num); // 5
+    p(num); //함수 호출
+
+    num -= 1;
+    //printf("num은 %d입니다.\n", num); // 4
+    p(num); //함수 호출
+
+    num *= 3;
+    //printf("num은 %d입니다.\n", num); // 12
+    p(num); //함수 호출
+
+    num /=6;
+    //printf("num은 %d입니다.\n", num); // 2
+    p(num); //함수 호출
+
+    return 0;
+    
+}
+
+//함수 정의
+//반환값 없이 출력만 하므로 함수의 반환형은 void
+void p(int num){
+    printf("num은 %d입니다.\n", num);
+}
+//반환형 : 함수에서 어떤 작업을 수행하고 나서 결과로 나오는 값의 자료형
+//반환값 : 결과로 나오는 값 --> 함수에서 반환값을 표시할때는 return 문을 사용
+//매개변수(parameter) : 함수의 전달값 자리에 들어가는 변수
+
+//매개변수(parameter)는 함수를 호출할 때 전달되는 값이 저장되는 변수이고 인수(argument)는 함수를 호출할 때 전달하는 값이나 변수이다.
+//void function(int a, int b); //함수 선언 --> a와 b는 매개변수(parameter)
+//    .
+//    .
+//    .
+//function(1, 2); //함수 호출 --> 1과 2는 인수(argument)
+
+//함수에서 반환값을 표시할 때는 return 문을 사용 --> 함수의 반환형을 void로 하면 반환할 값이 없다는 뜻이므로 return문은 필요 없음
+
+//함수 선언과 함수 정의는 반환형, 함수명, 매개변수의 종류와 개수를 동일하게 적어야 하지만 매개변수의 이름은 다르게 작성해도됨(되도록 같은 이름 사용!!)
+/*
+void p(int num1212){
+    printf("num은 %d입니다.\n", num1212); //매개변수의 이름은 달라도 종류와 개수가 같으면 작동함함
+}
+*/

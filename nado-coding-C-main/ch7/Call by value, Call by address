@@ -1,0 +1,54 @@
+p217 필기
+
+/*
+//Call by value(값 전달) --> 복사본이 생성되는 원리
+#include <stdio.h>
+
+void swap(int x, int y);
+
+int main(void){
+    int a = 3, b = 5;
+
+    swap(a, b);
+
+    printf("%d %d", a, b); 
+    //3 5로 변경되지 않음 --> a b는 원본이고 swap함수에서 받는 x y를 복사본이라고 생각한다면 swap함수 안에서 바뀌는 값은 원본이 아니라 복사본이 바뀌는것이므로 원본(a b)은 바뀌지 않음
+    //a와 b의 값은 swap함수 안에서 복사본(x y)만 바뀌고 다시 main함수로 오면 원본(a b)는 바뀌지 않음
+
+    //따라서 값을 바꾸고 싶으면 swap이라는 함수가 a와 b에 와서 이 값을 바꿔줘야함!!
+    //a와 b의 값을 전달하는 것이 아니라 a와 b에 접근할 수 있도록 a와 b가 있는 주소!!를 전달해야함.
+    return 0;
+}
+
+void swap(int x, int y){
+    int temp;
+    temp = x;
+    x = y;
+    y = temp;
+}
+*/
+
+//Call by address(참조에 의한 전달) --> 본래의 전달하는 값을 변경하는 원리(변수의 값이 변경되길 바랄 때 사용)
+#include <stdio.h>
+
+void swap(int *p1, int *p2); //a와 b의 주소를 저장하는 포인터
+
+int main(void){
+    int a = 3, b = 5;
+
+    swap(&a, &b); //주소를 포인터가 저장해서 포인터가 가리키게함
+
+    printf("%d %d", a, b);
+    //5 3으로 변경됨 --> swap함수에서 포인터를 이용해 a와 b의 주소가 가리키는 값을 바꿨기 때문
+
+    return 0;
+    
+}
+
+void swap(int *p1, int *p2){
+    int temp;
+    //역참조를 이용해 두 변수의 값을 바꿈
+    temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}

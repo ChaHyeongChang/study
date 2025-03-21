@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+bool bigger(int a, int b, int& big){
+    if(a > b){
+        big = a;
+    }
+    if(b > a){
+        big = b;
+    }
+    else{
+        return false;
+    }
+
+    return true;
+    
+}
+
+int main(){
+    int x, y, big;
+    bool b;
+
+    cout << "두 정수를 입력하세요 >>";
+    cin >> x >> y;
+
+    b = bigger(x, y, big);
+
+    if(b == false){
+        cout << "same" << '\n';
+    }
+    else{
+        cout << "큰 수는 : " << big << '\n';
+    }
+
+    return 0;
+}

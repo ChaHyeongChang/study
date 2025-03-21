@@ -1,0 +1,42 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+/*
+int main(void){
+    
+    int rad;
+    srand((unsigned int)time(NULL)); //시간은 보통 음수로 표현하지 않으므로 unsigned int를 활용함
+    rad = rand();  // 0 ~ 32767
+    printf("%d", rad);
+
+    return 0;
+}
+*/
+
+////rand() % 숫자
+/*
+    rand() % 3을 예시로 한다면 랜덤한 값인 rand()를 3으로 나눈 나머지는 0, 1, 2밖에 없으므로
+    rand() % 3은 0, 1, 2 의 값(0 ~ 2) 까지 뽑아낼 수 있다.
+
+    //rand() % 100 --> 최대 나머지는 99이므로 rand() % 100의 범위는 (0 ~ 99)이다.
+    //만약 1 ~ 100 까지의 난수를 뽑고 싶다면 rand() % 100 --> (0 ~ 99)_ 이므로 여기에 +1을 한다면 rand() % 100 + 1 ---> (1 ~ 100) 의 난수를 뽑을 수 있다.
+*/
+
+
+/////내가 원하는 수의 범위를 추출하는법////
+// 3 ~ 5의 값을 추출하고 싶을 때
+
+int main(void){
+    int begin = 3;
+    int end = 5;
+    int rad;
+
+    srand((unsigned int)time(NULL));
+    rad = rand() % (end - begin + 1) + begin;
+
+    printf("%d", rad);
+
+    return 0;
+}

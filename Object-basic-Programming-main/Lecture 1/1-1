@@ -1,0 +1,31 @@
+#include <iostream>
+//<iostream> 헤더 파일을 컴파일 전에 소스에 확장하도록 지시
+//<iostream> 헤더 파일 : 입출력을 위한 클래스와 객체, 변수 등이 선언됨
+
+int main(){
+    std::cout << "My name is CHA. \n"; //C++의 출력 객체인 cout을 이용
+    // cout << 값 형식으로 출력함
+    // << 연산자 다음에 기본형의 변수를 저장하면 자동으로 데이터 형에 맞추어 출력됨
+
+    return 0;
+}
+
+/*
+#include <iostream>
+
+// 원형 선언 : 함수의 반환형,함수의 이름, 매개변수만을 먼저 선언하는 것
+void star(int a=5);
+
+int main() {
+    star(); // star(5);와 동일 --> void star(int a=5)에서 int a=5는 기본값(default value)이므로 star()를 호출하면 a에 값이 전달되지 않으므로 자동으로 5가 대입됨!!
+    star(10);
+
+    return 0;
+}
+
+// 함수 구현
+void star(int a) {
+    for(int i=0; i<a; i++) std::cout << '*';
+    std::cout << '\n';
+}
+*/

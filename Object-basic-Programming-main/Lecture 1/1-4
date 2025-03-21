@@ -1,0 +1,56 @@
+#include <iostream>
+
+int main(){
+    for(int i = 1; i <= 4; i++){
+        for(int k = 1; k <= i; k++){
+            std::cout << '*';
+        }
+        std::cout << '\n';
+    }
+
+    return 0;
+}
+
+
+/*
+//피라미드(4줄)
+
+int main(){
+
+    for(int i = 1; i <= 4; i++){
+        for(int k = i; k <= 3; k++){
+            std::cout << ' ';
+        }
+        for(int n = 1; n <= 2*i - 1; n++){
+            std::cout << '*';
+        }
+        std::cout << '\n';
+    }
+
+    return 0;
+}
+*/
+
+//지피티 풀이
+/*
+#include <iostream>
+
+int main() {
+    int n = 4; // 피라미드의 높이
+
+    for (int i = 1; i <= n; i++) {
+        // 공백 출력
+        for (int j = 0; j < n - i; j++) {
+            std::cout << " ";
+        }
+        // 별 출력
+        for (int j = 0; j < 2 * i - 1; j++) {
+            std::cout << "*";
+        }
+        std::cout << std::endl; // 줄바꿈
+    }
+
+    return 0;
+}
+
+*/

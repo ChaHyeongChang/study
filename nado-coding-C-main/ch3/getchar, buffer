@@ -1,0 +1,72 @@
+
+#include <stdio.h>
+/////getchar() 설명
+/*
+int main(void){
+
+    //getchar함수 -> 한글자를 입력 받는 함수(문자만 받을 수 있음) : <stdio.h> 헤더 파일을 추가하면 사용가능
+
+    char c1, c2, c3;
+
+    scanf("%c", &c1); // c1 = getchar();  -> 한 글자를 입력받아서 c1에 저장한다.
+    scanf("%c", &c2); // c2 = getchar();  -> 한 글자를 입력받아서 c2에 저장한다.
+    scanf("%c", &c3); // c3 = getchar();  -> 한 글자를 입력받아서 c3에 저장한다.
+
+    return 0;
+}
+*/
+
+////문자 3개를 입력받을 때 a만 입력하고 엔터를 친 상황(두번째 %c가 buffer에 있는 \n때문에 씹힘)
+/*
+int main(void){
+    char c1, c2, c3;
+
+    scanf("%c", &c1); //만약 a만치고 엔터를 입력했을 때 첫번째 입력을 받고나서 두번째%c가 작동할 때 버퍼에 남아있는 \n을 가지고 와서 두번째 입력으로 들어가기 때문에 두번째 입력은 입력받지 못하고 씹히는 상황이 발생함!
+    scanf("%c", &c2); //따라서 버퍼가 완전히 비어있는 상황이어야 입력을 받을 수 있기 때문에 입력을 한 후에 다음 입력을 계속적으로 입력받게 하려면 buffer가 초기 상태로 있어야 한다.
+    scanf("%c", &c3); //buffer를 초기 상태로 만드는 방법 --> while(getchar() != '\n');
+
+    return 0;
+}
+*/
+
+//문자와 정수를 입력받기
+
+#include <stdio.h>
+
+int main(void){
+
+    char c1, c2;
+    int answer;
+
+    scanf("%c", &c1); //만약 a엔터를 입력하고
+    scanf("%d", &answer); //만약 123엔터를 입력한다면
+    scanf("%c", &c2); //scanf("%c", &c2);를 실행하려고 할 때, 버퍼에 이미 개행 문자 \n이 남아 있어서 바로 c2로 읽히게 됨.
+
+    printf("%c%d%c", c1, answer, c2); //a123\n(줄바꿈) -->버퍼에는 \n이 하나 남게됨
+
+    printf("줄바꿈되나?"); //줄바꿈되고 출력
+
+
+    return 0;
+}
+
+/////문자를 입력하고 buffer에 있는 첫번째 문자만 입력받고 다음 입력을 계속적으로 입력받게 하는 코드
+
+int main(void){
+    char c1, c2, c3;
+
+    scanf("%c", &c1);  //c1 = getchar();
+    while(getchar() != '\n');
+    printf("%c\n", c1);
+
+    scanf("%c", &c2);  //c2 = getchar();
+    while(getchar() != '\n');
+    printf("%c\n", c2);
+
+    scanf("%c", &c3);  //c3 = getchar();
+    while(getchar() != '\n');
+    printf("%c\n", c3);
+
+    return 0;
+}
+

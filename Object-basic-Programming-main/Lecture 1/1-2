@@ -1,0 +1,11 @@
+#include <iostream>
+
+int main(){
+    
+    std::cout << "학과 : 소프트웨어학부\n";
+    std::cout << "나이 : 23세\n";
+    std::cout << "희망 직업 : 게임개발자\n";
+    //std::cout << "학과 : 소프트웨어학부\n나이 : 23세\n희망직업 : 게임개발자\n";
+    
+    return 0;
+}
