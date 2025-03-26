@@ -13,7 +13,7 @@ elif n == '2':
 
     for i in range(num1, num2+1, 1):
         answer2 += i
-    print("%d+...+%d는 %d입니다" % (num1, num2, answer2))'
+    print("%d+...+%d는 %d입니다" % (num1, num2, answer2))
 else:
     print("다른값을 입력했습니다.")
 
