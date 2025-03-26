@@ -133,3 +133,43 @@ zip() 함수를 사용해 동시에 여러 리스트 접근 가능
     
     깊은 복사 :
 '''
+
+'''
+문자열 기본
+
+더하기 곱하기 등 기호사용 문자열 반복
+
+ss = "파이썬abcd"
+
+print(len(ss))
+
+for i in ragne(0, len(ss)):
+    print(ss[i] + "$", end = "")
+
+
+p49
+앞에가 괄호로 되어있지 않다면 괄호추가
+
+뒤에가 괄호로 되어있지 않다면 괄호 추가
+
+p50
+strip(), rstrip(), lstrip(), replace()
+
+
+p55
+split(), splitlines(), join()
+
+
+p57
+center(), ljust(), rjust(), zfill()
+
+p58
+전부True False로 반환함
+
+'''
+
+'''
+변수 = 시작값값
+while 변수 < 끝값:
+    변수 = 변수 + 증가값
+'''
