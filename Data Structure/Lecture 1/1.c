@@ -121,6 +121,7 @@ int main(void){
 
 */
 //백준 11720번
+/*
 #include <stdio.h>
 
 int main(void){
@@ -140,3 +141,25 @@ int main(void){
 
     return 0;
 }
+*/
+//백준 11720번 다른 풀이
+#include <stdio.h>
+
+int main(void) {
+    int a;
+    int sum = 0;
+    int digit;
+
+    scanf("%d", &a);
+
+    for (int i = 0; i < a; i++) {
+        scanf("%1d", &digit);  // 숫자 하나씩 읽기 //scanf("%1d", &digit);는 한 자리 정수 한 개씩 입력받는 방식, 공백 없이 붙어 있는 경우에만 잘 작동함
+        sum += digit;
+    }
+
+    printf("%d", sum);
+
+    return 0;
+}
+
+
