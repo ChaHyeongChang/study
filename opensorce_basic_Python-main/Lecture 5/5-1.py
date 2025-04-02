@@ -5,8 +5,8 @@ def import_random():
     
     number = []
     
-    while len(number) < 6:
-        
+    while len(number) < 6:  ###중복이 나오면 다시 뽑도록 만듬,, for문으로는 구현이 안됨(for문은 i가 자동으로 1씩 증가해서 중복이 나오면 나온만큼 변수가 하나씩 적게 저장됨)
+        ##중복된 숫자가 나왔을 때는 append()가 안 되므로 길이가 유지되고 따라서 반복이 멈추지 않고 다음 숫자를 다시 뽑게 됨.
         num = random.randrange(1, 46)
         if num not in number:
             number.append(num)
