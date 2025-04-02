@@ -33,11 +33,9 @@ int main(void){
 
 
 //연결리스트 장점 : 삽입 삭제가 빠름
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-/*
 
+/*
+//백준 10818번번
 int main(void){
 
     int n;
@@ -75,26 +73,70 @@ int main(void){
 }
 
 */
+/*
+//백준 2562번
+#include <stdio.h>
 
 int main(void){
     int num[9] = {0, };
-    int max;
-    int maxidx;
+    int max = 0;
+    int maxidx = 1;
 
     for(int i = 0; i < 9; i++){
         scanf("%d", &num[i]);
-    }
-
-    max = num[0];
-
-    for(int j = 1; j < 9; j++){
-        if(num[j] >= max){
-            max = num[j];
-            maxidx = j;
+        if(num[i] > max){
+            max = num[i];
+            maxidx = i+1;
         }
     }
 
     printf("%d\n%d", max, maxidx);
+
+    return 0;
+}
+*/
+
+/*
+//백준 10872 번
+#include <stdio.h>
+
+int fec(int n){
+    if(n == 0){
+        return 1;
+    }
+    else{
+        return n*fec(n-1);
+    }
+}
+
+int main(void){
+    int a, result;
+
+    scanf("%d", &a);
+
+    printf("%d\n", fec(a));
+
+    return 0;
+}
+
+*/
+//백준 11720번
+#include <stdio.h>
+
+int main(void){
+    int a;
+    int sum = 0;
+
+    char num[100];
+
+    scanf("%d", &a);
+    scanf("%s", num);
+
+    for(int i = 0; i < a; i++){
+        sum += num[i] - '0';
+    }
+
+    printf("%d", sum);
 
     return 0;
 }
