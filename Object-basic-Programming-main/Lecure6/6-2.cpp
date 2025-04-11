@@ -22,7 +22,7 @@ Oval::Oval(int w, int h) {
 	height = h;
 }
 Oval::~Oval() {
-	cout << "Oval¼Ò¸ê : width = " << width << ", height = " << height << endl;
+	cout << "Oval ì†Œë©¸ : width = " << width << ", height = " << height << endl;
 }
 int Oval::getWidth() {
 	return width;

@@ -38,7 +38,7 @@ int main() {
     Rectangle rect2(3, 5);
     Rectangle rect3(3);
     
-    if(rect1.isSquare()) cout << "rect1Àº Á¤»ç°¢ÇüÀÌ´Ù." << endl;
-    if(rect2.isSquare()) cout << "rect2´Â Á¤»ç°¢ÇüÀÌ´Ù." << endl;
-    if(rect3.isSquare()) cout << "rect3´Â Á¤»ç°¢ÇüÀÌ´Ù." << endl;
+    if(rect1.isSquare()) cout << "rect1ì€ ì •ì‚¬ê°í˜•ì´ë‹¤." << endl;
+    if(rect2.isSquare()) cout << "rect2ì€ ì •ì‚¬ê°í˜•ì´ë‹¤." << endl;
+    if(rect3.isSquare()) cout << "rect3ì€ ì •ì‚¬ê°í˜•ì´ë‹¤ë‹¤." << endl;
 }
