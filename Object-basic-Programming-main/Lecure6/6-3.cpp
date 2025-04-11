@@ -26,7 +26,7 @@ void MyVector::show(){
 }
 
 int main(){
-    MyVector a; // a(100, 0); °ú µ¿ÀÏ
+    MyVector a; // a(100, 0); 
     MyVector b(10, 3);
 
     a.show();

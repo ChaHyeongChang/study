@@ -1,10 +1,10 @@
-#include "Adder.h"  // Adder.h 헤더 파일을 포함시킴
+#include "Adder.h"  
 
-Adder::Adder(int a, int b) {  // 생성자 정의
+Adder::Adder(int a, int b) {  
     op1 = a;
     op2 = b;
 }
 
-int Adder::process() {  // 덧셈 계산 함수 정의
+int Adder::process() {  
     return op1 + op2;
 }
