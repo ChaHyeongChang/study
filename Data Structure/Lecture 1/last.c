@@ -15,14 +15,14 @@ typedef struct polyNode {
     PolyPointer link;
 } PolyNode;
 
-// 정렬 + 병합
+// 정렬 및 병합 함수
 void sort_desc(Polynomial* p, int len) {
     for (int i = 0; i < len - 1; i++)
         for (int j = i + 1; j < len; j++)
             if (p[i].expon < p[j].expon) {
-                Polynomial temp = p[i];
+                Polynomial tmp = p[i];
                 p[i] = p[j];
-                p[j] = temp;
+                p[j] = tmp;
             }
 }
 
@@ -97,7 +97,7 @@ void padd_array_improved(Polynomial* a, int a_len, Polynomial* b, int b_len, Pol
     while (j < b_len) result[(*result_len)++] = b[j++];
 }
 
-// 연결리스트용 함수
+// 연결 리스트
 void attach(PolyPointer* ptr, PolyPointer* rear, double coefficient, int exponent) {
     PolyPointer temp = (PolyPointer)malloc(sizeof(PolyNode));
     temp->coef = coefficient;
@@ -136,17 +136,6 @@ PolyPointer padd_list(PolyPointer a, PolyPointer b) {
     return front;
 }
 
-int list_to_array(PolyPointer p, Polynomial* arr) {
-    int count = 0;
-    while (p) {
-        arr[count].coef = p->coef;
-        arr[count].expon = p->expon;
-        count++;
-        p = p->link;
-    }
-    return count;
-}
-
 PolyPointer create_list(FILE* fp, int n) {
     PolyPointer head = NULL, rear = NULL;
     for (int i = 0; i < n; i++) {
@@ -159,22 +148,59 @@ PolyPointer create_list(FILE* fp, int n) {
     return head;
 }
 
-// 각각 방식 실행 함수
+int list_to_array(PolyPointer p, Polynomial* arr) {
+    int count = 0;
+    while (p) {
+        arr[count].coef = p->coef;
+        arr[count].expon = p->expon;
+        count++;
+        p = p->link;
+    }
+    return count;
+}
+
+// 각각 방식
 void func1(FILE* fin, FILE* fout) {
     int n, m;
     fscanf(fin, "%d %d", &n, &m);
+
+    // A, B 다항식 입력
     Polynomial* a = malloc(n * sizeof(Polynomial));
     Polynomial* b = malloc(m * sizeof(Polynomial));
     for (int i = 0; i < n; i++) fscanf(fin, "%lf %d", &a[i].coef, &a[i].expon);
     for (int i = 0; i < m; i++) fscanf(fin, "%lf %d", &b[i].coef, &b[i].expon);
-    sort_desc(a, n); sort_desc(b, m);
-    int a_len = merge_terms(a, n), b_len = merge_terms(b, m);
-    Polynomial* result = malloc((n + m) * sizeof(Polynomial)); int r_len = 0;
-    padd_array_original(a, a_len, b, b_len, result, &r_len);
-    r_len = merge_terms(result, r_len);
+
+    // 정렬 및 병합
+    sort_desc(a, n);
+    sort_desc(b, m);
+    int a_len = merge_terms(a, n);
+    int b_len = merge_terms(b, m);
+
+    // 출력 A B
+    print_poly(a, a_len, fout);
+    print_poly(b, b_len, fout);
+
+    // 복사본 생성 (원본 보존)
+    Polynomial* a_copy = malloc(a_len * sizeof(Polynomial));
+    Polynomial* b_copy = malloc(b_len * sizeof(Polynomial));
+    for (int i = 0; i < a_len; i++) a_copy[i] = a[i];
+    for (int i = 0; i < b_len; i++) b_copy[i] = b[i];
+
+    // 개선 전 방식 덧셈
+    Polynomial* result = malloc((a_len + b_len) * sizeof(Polynomial));
+    int r_len = 0;
+    padd_array_original(a_copy, a_len, b_copy, b_len, result, &r_len);
+    
+    // ⛔ merge_terms 제거!
+    // r_len = merge_terms(result, r_len);
+
     print_poly(result, r_len, fout);
-    free(a); free(b); free(result);
+
+    // 메모리 해제
+    free(a); free(b); free(a_copy); free(b_copy); free(result);
 }
+
+
 
 void func2(FILE* fin, FILE* fout) {
     int n, m;
@@ -188,6 +214,8 @@ void func2(FILE* fin, FILE* fout) {
     Polynomial* result = malloc((n + m) * sizeof(Polynomial)); int r_len = 0;
     padd_array_improved(a, a_len, b, b_len, result, &r_len);
     r_len = merge_terms(result, r_len);
+    print_poly(a, a_len, fout);
+    print_poly(b, b_len, fout);
     print_poly(result, r_len, fout);
     free(a); free(b); free(result);
 }
@@ -198,19 +226,27 @@ void func3(FILE* fin, FILE* fout) {
     PolyPointer a = create_list(fin, n);
     PolyPointer b = create_list(fin, m);
     PolyPointer result = padd_list(a, b);
+    Polynomial* arr_a = malloc(n * sizeof(Polynomial));
+    Polynomial* arr_b = malloc(m * sizeof(Polynomial));
+    int len_a = list_to_array(a, arr_a);
+    int len_b = list_to_array(b, arr_b);
+    sort_desc(arr_a, len_a); sort_desc(arr_b, len_b);
+    int a_len = merge_terms(arr_a, len_a);
+    int b_len = merge_terms(arr_b, len_b);
     Polynomial* result_arr = malloc((n + m) * sizeof(Polynomial));
     int r_len = list_to_array(result, result_arr);
     sort_desc(result_arr, r_len);
     r_len = merge_terms(result_arr, r_len);
+    print_poly(arr_a, a_len, fout);
+    print_poly(arr_b, b_len, fout);
     print_poly(result_arr, r_len, fout);
-    free(result_arr);
+    free(arr_a); free(arr_b); free(result_arr);
     PolyPointer temp;
     while (a) { temp = a; a = a->link; free(temp); }
     while (b) { temp = b; b = b->link; free(temp); }
     while (result) { temp = result; result = result->link; free(temp); }
 }
 
-// 메인 함수
 int main() {
     FILE* fin = fopen("Input.txt", "r");
     FILE* fout = fopen("output.txt", "w");
