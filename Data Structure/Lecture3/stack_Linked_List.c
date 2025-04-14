@@ -64,6 +64,23 @@ void push(node** pHead, int data){ //head포인터 변수 자체를 바꾸기 �
     printf("\n\n\t\t%d push!!!\n", newNode->value);
 }
 
+void pop(node **pHead){
+    node *delNode = NULL;
+    
+    //맨 앞 노드 제거!
+    if(*pHead == NULL){
+        printf("\n\n\t\tstack underflow\n");
+        return;
+    }
+
+    delNode = *pHead; //삭제할 노드를 첫 노드로 설정
+    *pHead = (*pHead)->next; //head를 다음 노드로 옮김
+    //pHead[0] = pHead[0]->next;
+
+    printf("\n\n\t\t%d pop!!!", delNode->value);
+    free(delNode); //delNode가 가리키는 노드 제거 (맨 앞 노드 삭제)
+}
+
 void display(node *head){
     node *curNode = head;
 
@@ -81,22 +98,7 @@ void display(node *head){
     printf("%d\n", curNode->value); //마지막 노드는 while문에서 출력이 안되었으므로 따로 출력
 }
 
-void pop(node **pHead){
-    node *delNode = NULL;
-    
-    //맨 앞 노드 제거!
-    if(*pHead == NULL){
-        printf("\n\n\t\tstack underflow\n");
-        return;
-    }
 
-    delNode = *pHead; //삭제할 노드를 첫 노드로 설정
-    *pHead = (*pHead)->next; //head를 다음 노드로 옮김
-    //pHead[0] = pHead[0]->next;
-
-    printf("\n\n\t\t%d pop!!!", delNode->value);
-    free(delNode); //delNode가 가리키는 노드 제거 (맨 앞 노드 삭제)
-}
 
 void clear(node **pHead){
     node *delNode = *pHead;
