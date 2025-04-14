@@ -1,2 +1,2 @@
 
-        head = insertSorted(head, coef, exp);
+    if (!fin || !fout) {

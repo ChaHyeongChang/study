@@ -1,9 +1,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <Windows.h>
-
-// ======================= 배열 기반 (공용) =======================
+#include <Windows.h> //#include<time.h> 사용시 실행시간이0.0000000으로 나와서 사용함.
+#include <time.h>
+// ======================= 배열 기반 (공용) ======================= //
 
 // 다항식 항(term) 구조체 (계수: float, 지수: int)
 typedef struct {
@@ -12,32 +12,31 @@ typedef struct {
 } Term;
 
 // 다항식 구조체 (배열 기반)
-// size: 실제 항의 개수, capacity: 할당된 배열 크기
 typedef struct {
-    Term* terms;
-    int size;
-    int capacity;
+    Term* terms; //Term 구조체 배열을 가리키는 포인터(다항식의 항 목록들)
+    int size; //현재 저장된 항의 개수
+    int capacity; //할당된 최대 항의 개수
 } polynomial;
 
-// 초기 다항식 생성 (capacity 만큼 메모리 할당, size는 0)
+// 초기 다항식 생성 (capacity 만큼 메모리 할당하고, size는 0)
 polynomial Zero(int capacity) {
-    polynomial poly;
-    poly.capacity = capacity;
-    poly.size = 0;
-    poly.terms = (Term*)malloc(capacity * sizeof(Term));
-    return poly;
+    polynomial poly; // polynomail 구조체 변수 poly선언
+    poly.capacity = capacity; //항 배열의 최대 크기를 설정함
+    poly.size = 0; //현재 항의 개수를 0으로 초기화해줌
+    poly.terms = (Term*)malloc(capacity * sizeof(Term)); //capacity의 크기만큼 동적 배열 할당해줌
+    return poly; //초기화된 다항식을 반환함
 }
 
-// 다항식에 항 추가 (capacity 부족시 재할당)
+// 다항식에 항 추가 (capacity 부족시 재할당 -> capacity를 2배로 늘려서)
 polynomial attach1(polynomial poly, float coef, int exp) {
-    if (poly.size >= poly.capacity) {
-        poly.capacity *= 2;
-        poly.terms = (Term*)realloc(poly.terms, poly.capacity * sizeof(Term));
+    if (poly.size >= poly.capacity) { //현재 크기가 capacity넘으면
+        poly.capacity *= 2; //capacity를 두배로 늘림.
+        poly.terms = (Term*)realloc(poly.terms, poly.capacity * sizeof(Term)); //배열 크기를 재할당 해줌(원래 있던 데이터는 유지시켜주고)
     }
-    poly.terms[poly.size].coef = coef;
-    poly.terms[poly.size].exp = exp;
-    poly.size++;
-    return poly;
+    poly.terms[poly.size].coef = coef; //새 항의 계수를 저장
+    poly.terms[poly.size].exp = exp; //새 항의 지수를 저장
+    poly.size++; // 항의 개수를 증가시킴
+    return poly; // 변경된 다항식을 반환함.
 }
 
 // 버블 정렬을 이용하여 다항식 항을 내림차순(지수가 큰 순) 정렬
@@ -423,6 +422,7 @@ void func3(FILE *fin, FILE *fout) {
 }
 
 // ======================= main() =======================
+
 int main() {
     FILE* fin = fopen("Input.txt", "r");
     FILE* fout = fopen("output.txt", "w");
@@ -462,3 +462,46 @@ int main() {
     fclose(fout);
     return 0;
 }
+
+
+/*
+int main() {
+    FILE* fin = fopen("Input.txt", "r");
+    FILE* fout = fopen("output.txt", "w");
+
+    if (!fin || !fout) {
+        printf("파일 열기 실패\n");
+        return 0;
+    }
+
+    clock_t start, end;
+    double s1, s2, s3; // 각각 func1, func2, func3의 실행 시간 (초 단위)
+
+    // func1: 배열 기반 "개선 전" 방식 (파일 읽기부터 실행 포함)
+    start = clock();
+    func1(fin, fout);
+    end = clock();
+    s1 = ((double)(end - start)) * 1000000 / CLOCKS_PER_SEC;
+    rewind(fin);
+
+    // func2: 배열 기반 "개선 후" 방식 (파일 읽기부터 실행 포함)
+    start = clock();
+    func2(fin, fout);
+    end = clock();
+    s2 = ((double)(end - start)) * 1000000 / CLOCKS_PER_SEC;
+    rewind(fin);
+
+    // func3: 연결리스트 방식 (파일 읽기부터 실행 포함)
+    start = clock();
+    func3(fin, fout);
+    end = clock();
+    s3 = ((double)(end - start)) * 1000000 / CLOCKS_PER_SEC;
+
+    fprintf(fout, "%.7lf\t%.7lf\t%.7lf\n", s1, s2, s3);
+
+    fclose(fin);
+    fclose(fout);
+    return 0;
+}
+
+*/
