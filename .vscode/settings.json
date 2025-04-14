@@ -2,6 +2,10 @@
   "files.associations": {
     "iostream": "cpp",
     "stdlib.h": "c",
-    "random": "cpp"
+    "random": "cpp",
+    "array": "c",
+    "string": "c",
+    "string_view": "c",
+    "span": "c"
   }
 }
