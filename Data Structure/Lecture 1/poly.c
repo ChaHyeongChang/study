@@ -420,7 +420,8 @@ int main() {
     QueryPerformanceCounter(&end); //종료 시간 측정
     t3 = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart; //실행 시간 계산
 
-    fprintf(fout, "%.7lf\t%.7lf\t%.7lf\n", t1, t2, t3);
+    fprintf(fout, "%.7lf\t%.7lf\t%.7lf\n", t1, t2, t3); // 각각의 실행시간 출력
+    
     fclose(fin); //파일 닫기
     fclose(fout); //츨력 파일 닫기
     return 0;
