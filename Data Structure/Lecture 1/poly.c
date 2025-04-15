@@ -389,29 +389,39 @@ void func3(FILE* fin, FILE* fout) {
 }
 
 int main() {
-    FILE* fin = fopen("Input.txt", "r");
-    FILE* fout = fopen("output.txt", "w");
-    if (!fin || !fout) {
-        printf("파일 열기 실패\n");
+    FILE* fin = fopen("Input.txt", "r"); // 입력 파일(input.txt) 열기 (다항식 항 정보 읽기용)
+    FILE* fout = fopen("output.txt", "w"); // 출력 파일 열기 (결과 및 시간 기록용)
+
+    if (!fin || !fout) { //파일 읽기를 실패했으면
+        printf("파일 열기 실패\n"); //오류 메시지 출력
         return 0;
     }
 
-    LARGE_INTEGER freq, start, end;
-    double t1, t2, t3;
-    QueryPerformanceFrequency(&freq);
+    LARGE_INTEGER freq, start, end; // window전용 성능 측정용 변수 생성
+    double t1, t2, t3; //func1, func2, func3의 실행 시간 저장
+    QueryPerformanceFrequency(&freq); //cpu 타이머 주기 측정
 
-    QueryPerformanceCounter(&start); func1(fin, fout); QueryPerformanceCounter(&end);
-    t1 = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart;
-    rewind(fin);
+    QueryPerformanceCounter(&start); //시작 시간 측정
+    func1(fin, fout);  //1번 방식 진행
+    QueryPerformanceCounter(&end); //종료 시간 측정
+    t1 = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart; //실행 시간 계산
 
-    QueryPerformanceCounter(&start); func2(fin, fout); QueryPerformanceCounter(&end);
-    t2 = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart;
-    rewind(fin);
+    rewind(fin); //다시 실행할 때 처음부터 측정하기 위해서 파일 포인터를 처음으로 되돌림
 
-    QueryPerformanceCounter(&start); func3(fin, fout); QueryPerformanceCounter(&end);
-    t3 = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart;
+    QueryPerformanceCounter(&start); //시작 시간 측정
+    func2(fin, fout);  //2번 방식 진행
+    QueryPerformanceCounter(&end); //종료 시간 측정
+    t2 = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart; //실행 시간 계산
+
+    rewind(fin); //다시 실행할 때 처음부터 측정하기 위해서 파일 포인터를 처음으로 되돌림
+
+    QueryPerformanceCounter(&start); //시작 시간 측정
+    func3(fin, fout); //3번 방식 진행
+    QueryPerformanceCounter(&end); //종료 시간 측정
+    t3 = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart; //실행 시간 계산
 
     fprintf(fout, "%.7lf\t%.7lf\t%.7lf\n", t1, t2, t3);
-    fclose(fin); fclose(fout);
+    fclose(fin); //파일 닫기
+    fclose(fout); //츨력 파일 닫기
     return 0;
 }
