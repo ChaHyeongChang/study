@@ -388,13 +388,19 @@ void func3(FILE* fin, FILE* fout) {
     }
 }
 
-int main() {
-    FILE* fin = fopen("Input.txt", "r"); // 입력 파일(input.txt) 열기 (다항식 항 정보 읽기용)
-    FILE* fout = fopen("output.txt", "w"); // 출력 파일 열기 (결과 및 시간 기록용)
+int main(int argc, char* argv[]) {
+    // 인자 확인: 프로그램 이름 + 입력 파일 + 출력 파일 총 3개여야 함
+    if (argc < 3) {
+        printf("사용법: %s input.txt output.txt\n", argv[0]);
+        return 1;
+    }
 
+    FILE* fin = fopen(argv[1], "r"); // argv[1]: 입력 파일 이름
+    FILE* fout = fopen(argv[2], "w"); //argv[2]: 출력 파일 이름
+    
     if (!fin || !fout) { //파일 읽기를 실패했으면
         printf("파일 열기 실패\n"); //오류 메시지 출력
-        return 0;
+        return 1;
     }
 
     LARGE_INTEGER freq, start, end; // window전용 성능 측정용 변수 생성
@@ -421,7 +427,7 @@ int main() {
     t3 = (double)(end.QuadPart - start.QuadPart) / freq.QuadPart; //실행 시간 계산
 
     fprintf(fout, "%.7lf\t%.7lf\t%.7lf\n", t1, t2, t3); // 각각의 실행시간 출력
-    
+
     fclose(fin); //파일 닫기
     fclose(fout); //츨력 파일 닫기
     return 0;
