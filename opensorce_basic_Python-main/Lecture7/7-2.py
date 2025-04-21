@@ -5,7 +5,7 @@ import csv
 plt.rcParams['font.family'] = 'Malgun Gothic'
 plt.rcParams['axes.unicode_minus'] = False
 
-# 📁 파일 경로 (2003년 데이터)
+
 file_path = r"C:\Users\56flo\Desktop\data\SURFACE_ASOS_131_DAY_2003_2003_2018.csv"
 
 # 데이터 초기화
@@ -16,7 +16,7 @@ max_temp = []
 
 day = 1
 
-# 📄 CSV 파일 읽기
+
 with open(file_path, 'r', encoding='cp949') as f:
     reader = csv.reader(f)
     header = next(reader)  # 첫 줄(열 제목) 건너뛰기
@@ -34,7 +34,7 @@ with open(file_path, 'r', encoding='cp949') as f:
 
 print(f"데이터 개수: {len(x_data)}")  # 데이터 개수 확인
 
-# 📊 그래프 그리기
+
 plt.figure(figsize=(12, 6))
 plt.plot(x_data, max_temp, color='red', label='최고기온', linewidth=1)
 plt.plot(x_data, avg_temp, color='orange', label='평균기온', linewidth=1)
