@@ -8,7 +8,7 @@ int main(){
     vector<string> name(5);
     string lastname;
 
-    cout << "ÀÌ¸§À» 5°³ ÀÔ·ÂÇÏ¶ó" <<'\n';
+    cout << "ì´ë¦„ì„ 5ê°œ ìž…ë ¥í•˜ë¼" <<'\n';
 
     for(int i = 0; i < 5; i++){
         cout << i + 1 << ">>";
@@ -23,7 +23,7 @@ int main(){
         }
     }
 
-    cout << "»çÀü¿¡¼­ °¡Àå µÚ¿¡ ³ª¿À´Â ÀÌ¸§Àº " << lastname << '\n';
+    cout << "ì‚¬ì „ì—ì„œ ê°€ìž¥ ë’¤ì— ë‚˜ì˜¤ëŠ” ì´ë¦„ì€ " << lastname << '\n';
 
     return 0;
 

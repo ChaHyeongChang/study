@@ -7,7 +7,7 @@ int main(){
     string lastname;
 
     for(int i = 0; i < 5; i++){
-        cout << "ÀÌ¸§ >> ";
+        cout << "ì´ë¦„ >> ";
         getline(cin, name[i]);
     }
 
@@ -19,7 +19,7 @@ int main(){
         }
     }
 
-    cout << "»çÀü¿¡¼­ °¡Àå µÚ¿¡ ³ª¿À´Â ¹®ÀÚ¿­Àº " << lastname << '\n';
+    cout << "ì‚¬ì „ì—ì„œ ê°€ì¥ ë’¤ì— ë‚˜ì˜¤ëŠ” ë¬¸ìì—´ì€ " << lastname << '\n';
 
     return 0;
 
