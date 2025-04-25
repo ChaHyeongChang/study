@@ -5,7 +5,7 @@
 
 
 ##### 2-2 #####
-'''
+
 base = input("입력 진수 결정(16/10/8/2) : ")
 base = int(base)
 #base = int(input("입력 진수 결정(16/10/8/2) : ))
@@ -33,10 +33,10 @@ print(" 2진수 ==> %s" % bin(n))
 #print(f" 8진수 ==> {oct(n)}")
 #print(f" 2진수 ==> {bin(n)}")
 
-'''
+
 
 ##### 2-3 #####
-
+'''
 money = int(input("교환할 돈은 얼마 ? "))
 
 num_500 = money // 500 # //연산자는 나머지의 값을 정수 개수로 표현, num_500 = money / 500은 나눗셈 연산자로 결과로 실수(float)형태가 저장됨
@@ -56,7 +56,7 @@ print(" 10원짜리  ==> %d개" % num_10)
 money %= 10
 
 print(" 바꾸지 못한 잔돈 ==> %d원" % money)
-
+'''
 '''
 money = input("교환할 돈은 얼마 ? ")
 money = int(money)

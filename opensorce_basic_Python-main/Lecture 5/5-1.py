@@ -29,3 +29,7 @@ number = sorted(random.sample(range(1, 46), 6))
 print("로또 번호:", numbers)
 
 '''
+
+def dic_func(**para):
+    for k in para.keys():
+        print("%s : %s 명입니다." % (k, para[k]))
