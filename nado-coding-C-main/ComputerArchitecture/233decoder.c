@@ -61,6 +61,16 @@ int main(void) {
 
         int swap_bit = (memory_line[5] - '0') * 4 + (memory_line[6] - '0') * 2 + (memory_line[7] - '0'); //swap에서 사용할 인덱스의 값
 
+        
+        if (address_bit < 0 || address_bit >= 8) { //address_bit의 범위가 벗어난다면 오류 처리
+            fprintf(stderr, "%d번째 줄에서 인덱스의 범위를 벗어나 오류가 발생하였고 다음줄로 넘어갑니다.\n", line_nom);
+            continue;
+        }
+
+        if (opcode == 3 && (swap_bit < 0 || swap_bit >= 8)) { //swap명령일 때 swap_bit의 범위가 벗어난다면 오류 처리
+            fprintf(stderr, "%d번째 줄에서 인덱스의 범위를 벗어나 오류가 발생하였고 다음줄로 넘어갑니다.\n", line_nom);
+            continue;
+        }
 
         //각각의 명령어 00(store), 01(add), 10(sub), 11(swap)
         if (opcode == 0) { //store
