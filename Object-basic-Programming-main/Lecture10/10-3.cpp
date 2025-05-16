@@ -18,6 +18,9 @@ public:
         cout << title << ' ' << price << "원 " << pages << " 페이지" << endl;
     }
 
+    string getTitle() { 
+        return title; 
+    }
     // price 비교
     bool operator==(int p) {
         return price == p;

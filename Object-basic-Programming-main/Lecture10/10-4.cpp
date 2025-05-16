@@ -18,9 +18,13 @@ public:
         cout << title << ' ' << price << "원 " << pages << " 페이지" << endl;
     }
 
+    string getTitle() { 
+        return title; 
+    }
+
     friend bool operator==(const Book& b, int price);
     friend bool operator==(const Book& b, const string& title);
-    friend bool operator==(const Book& a1, const Book& b1);  // ← 여기 이름만 바꿈
+    friend bool operator==(const Book& a1, const Book& b1);
 };
 
 // price 비교
@@ -33,7 +37,7 @@ bool operator==(const Book& b, const string& title) {
     return b.title == title;
 }
 
-// 전체 비교 (이름만 a1, b1로 수정)
+// 전체 비교
 bool operator==(const Book& a1, const Book& b1) {
     return a1.title == b1.title && a1.price == b1.price && a1.pages == b1.pages;
 }
