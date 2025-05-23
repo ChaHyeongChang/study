@@ -47,7 +47,7 @@ int main() {
     for (int i = 0; i < 5; i++) {
         cout << i + 1 << " >> ";
         cin >> r >> n;
-        pizza[i] = NamedCircle(r, n);  // 복사 대입
+        pizza[i] = NamedCircle(r, n);
     }
 
     
