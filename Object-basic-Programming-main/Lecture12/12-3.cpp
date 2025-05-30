@@ -17,14 +17,19 @@ public:
 };
 
 class Adder : public Calculator{
-    int calc(int a, int b){
+
+public:
+    virtual int calc(int a, int b){
         return a + b;
     }
 };
 
 class Subtractor : public Calculator{
-    
-}
+public:
+    virtual int calc(int a, int b){
+        return a-b;
+    }
+};
 
 int main() {
     Adder adder;

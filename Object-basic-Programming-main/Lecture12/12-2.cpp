@@ -10,15 +10,15 @@ public:
 
 class GoodCalc : public Calculator {
 public:
-    int add(int a, int b) override {
+    virtual int add(int a, int b) {
         return a + b;
     }
 
-    int subtract(int a, int b) {
+    virtual int subtract(int a, int b) {
         return a - b;
     }
 
-    double average(int a[], int size){
+    virtual double average(int a[], int size){
         int sum = 0;
         for(int i = 0; i < size; i++){
             sum += a[i];
