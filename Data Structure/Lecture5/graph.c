@@ -1,30 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// 정점(노드) 최대 개수 지정 (필요시 수정)
-#define MAX_V 100
-// 무한대 값 정의 (경로가 없는 경우 등)
-#define INF 100000000
+#define MAX_V 100          // 정점(노드) 최대 개수 지정 (필요시 수정)
+#define INF 100000000      // 무한대 값 정의 (경로가 없는 경우 등)
 
 // 간선(Edge) 구조체 정의: 도착지, 두 가중치, 다음 간선 포인터
 typedef struct Edge {
-    int to;            // 도착 정점 번호
-    int w1;            // 첫 번째 가중치 (예: 시간)
-    int w2;            // 두 번째 가중치 (예: 에너지)
-    struct Edge* next; // 다음 간선(연결 리스트)
+    int to;                // 도착 정점 번호
+    int w1;                // 첫 번째 가중치 (예: 시간)
+    int w2;                // 두 번째 가중치 (예: 에너지)
+    struct Edge* next;     // 다음 간선(연결 리스트)
 } Edge;
 
 // 그래프 구조체 정의: 각 정점마다 간선 리스트를 가짐
 typedef struct {
-    Edge* head[MAX_V]; // 각 정점의 간선 연결 리스트 시작 포인터
-    int nV;            // 정점의 개수
+    Edge* head[MAX_V];     // 각 정점의 간선 연결 리스트 시작 포인터
+    int nV;                // 정점의 개수
 } Graph;
 
-// 다익스트라 알고리즘에 사용되는 우선순위큐 대체 구조 (사용 안 함)
-typedef struct {
-    int vertex;
-    double cost;
-} Node;
 
 // 그래프를 초기화하는 함수 (정점 수만큼 head 포인터를 NULL로 초기화)
 void initGraph(Graph* g, int nV) {
@@ -35,21 +28,19 @@ void initGraph(Graph* g, int nV) {
 
 // 그래프에 간선을 추가하는 함수
 void addEdge(Graph* g, int from, int to, int w1, int w2) {
-    // 새 간선 구조체를 동적으로 생성
     Edge* e = (Edge*)malloc(sizeof(Edge));
     e->to = to;
     e->w1 = w1;
     e->w2 = w2;
-    // 연결 리스트 맨 앞에 새 간선을 추가
     e->next = g->head[from];
     g->head[from] = e;
 }
 
 // 다익스트라 알고리즘: start에서 end까지 합성 가중치 최단경로 탐색
 void dijkstra(Graph* g, int start, int end, double alpha, double beta, int* path, double* total_cost) {
-    double dist[MAX_V];    // 각 정점까지의 최소 비용 저장
-    int prev[MAX_V];       // 최단경로 경로 복원용 (이전 정점)
-    int visited[MAX_V] = {0}; // 방문 여부 배열
+    double dist[MAX_V];        // 각 정점까지의 최소 비용 저장
+    int prev[MAX_V];           // 최단경로 경로 복원용 (이전 정점)
+    int visited[MAX_V] = {0};  // 방문 여부 배열
 
     // 모든 정점의 거리/이전 정점 초기화
     for (int i = 0; i < g->nV; i++) {
@@ -83,6 +74,7 @@ void dijkstra(Graph* g, int start, int end, double alpha, double beta, int* path
             }
         }
     }
+
     // 최단 경로 복원 (end에서 start로 거꾸로 따라감)
     int idx = 0;
     int stack[MAX_V];
@@ -97,7 +89,6 @@ void dijkstra(Graph* g, int start, int end, double alpha, double beta, int* path
     path[idx] = -1; // 경로 끝 표시
     *total_cost = dist[end]; // 총 비용 반환
 }
-
 
 int main() {
     // input.txt에서 입력, output.txt에 출력
