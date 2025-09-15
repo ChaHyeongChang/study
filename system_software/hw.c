@@ -64,7 +64,7 @@ int main() {
 
         // 정렬된 배열을 순회하며 인접한 값이 다른 경우에만 카운트를 증가시켜 고유한 값의 개수를 찾음
         unique_count = 1; // 첫 값은 항상 새로운 값으로 간주
-        for (long long i = 1; i < count; i++) { // 인접한 값이 달라지는 횟수 세기
+        for (long long i = 1; i < count; i++) { // 인접한 값이 달라지는 횟수를 셈
             if (numbers[i] != numbers[i-1]) {   // 값이 바뀌면 새로운 값 발견
                 unique_count++;
             }
