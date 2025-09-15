@@ -28,7 +28,7 @@ int main() {
     long long capacity = 100000; // 초기 용량(필요 시 2배 확장함)
     double *numbers = (double*)malloc(sizeof(double) * capacity); // 수 저장 버퍼
     if (numbers == NULL) {
-        printf("Error: 메모리 할당에 실패했습니다.\n"); // 메모리 확보 실패 처리
+        printf("Error: 메모리 할당에 실패했습니다.\n"); // 메모리 확보 실패 처리했을 때 문구
         fclose(file);
         return 1;
     }
@@ -59,8 +59,10 @@ int main() {
 
     long long unique_count = 0; // 서로 다른 값의 개수
     if (count > 0) { // 값이 하나 이상일 때만 계산
-        qsort(numbers, count, sizeof(double), compare_double); // 오름차순으로 정렬함
-        
+        // qsort(정렬할 배열, 요소 개수, 요소 크기, 비교 함수 포인터);
+        qsort(numbers, count, sizeof(double), compare_double); // C 표준 라이브러리를 이용해 배열을 오름차순으로 정렬함
+
+        // 정렬된 배열을 순회하며 인접한 값이 다른 경우에만 카운트를 증가시켜 고유한 값의 개수를 찾음
         unique_count = 1; // 첫 값은 항상 새로운 값으로 간주
         for (long long i = 1; i < count; i++) { // 인접한 값이 달라지는 횟수 세기
             if (numbers[i] != numbers[i-1]) {   // 값이 바뀌면 새로운 값 발견
@@ -73,12 +75,14 @@ int main() {
 
     gettimeofday(&end_time, NULL); // 종료 시각 
 
+    // 초(sec)는 1,000,000을 곱해 마이크로초로 변환하고, usec 값을 더해 총 경과 시간을 계산
+    // 곱셈 시 오버플로우를 방지하기 위해 long long 리터럴(1000000LL)을 사용함
     long long elapsed_microseconds = (end_time.tv_sec - start_time.tv_sec) * 1000000LL + (end_time.tv_usec - start_time.tv_usec); // 경과 시간(마이크로초)
     double elapsed_seconds = (double)elapsed_microseconds / 1000000.0; // 초 단위로 변환
 
-    printf("The number of unique values: %lld\n", unique_count); // 서로 다른 값의 개수 출력
+    printf("The number of unique values: %lld\n", unique_count); // 서로 다른 값의 개수 출력 (long long 타입이므로 %lld사용)
     printf("The number of more than 5000 values: %lld\n", over_5000_count); // 5000 초과 개수 출력
-    printf("Execution time: %.6f sec\n", elapsed_seconds); // 실행 시간(초) 출력
+    printf("Execution time: %.6f sec\n", elapsed_seconds); // 실행 시간(초) 출력 (소수점 6자리까지 표현하기 위해 %.6f사용)
 
     return 0; 
 }
