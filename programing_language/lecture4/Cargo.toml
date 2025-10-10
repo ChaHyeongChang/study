@@ -1,0 +1,11 @@
+[package]
+name = "lecture4"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# lexer 기능을 켭니다
+lalrpop-util = { version = "0.20.2", features = ["lexer"] }
+
+[build-dependencies]
+lalrpop = { version = "0.20.2" }
