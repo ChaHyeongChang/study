@@ -1,0 +1,26 @@
+{
+  "folders": [
+	{
+		"path": ".."
+	},
+	{
+		"path": "../../UCK_Project"
+	},
+	{
+		"path": "../../../unreal-unity-ar-chat-ui"
+	}
+],
+  "settings": {
+    "files.associations": {
+      "iostream": "cpp",
+      "stdlib.h": "c",
+      "random": "cpp",
+      "array": "c",
+      "string": "c",
+      "string_view": "c",
+      "span": "c",
+      "new": "cpp",
+      "vector": "cpp"
+    }
+  }
+}
