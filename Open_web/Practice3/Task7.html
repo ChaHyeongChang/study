@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .section1 {
+        text-transform: uppercase;
+      }
+      .section1 {
+        text-align: center;
+      }
+      ul {
+        list-style-type: square;
+      }
+      li::marker {
+        color: red;
+      }
+      li:nth-child(1) {
+        font-style: italic;
+      }
+    </style>
+    <link type="text/css" rel="stylesheet" href="mystyle.css" />
+    <title>Portfolio - Aziz Nasridinov</title>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Welcome to My Personal Webpage</h1>
+    </div>
+
+    <div id="navigation">
+      <p>
+        <a href="index.html">Home</a> | <a href="portfolio.html">Portfolio</a> |
+        <a href="timetable.html">Timetable</a>
+      </p>
+    </div>
+
+    <div id="content">
+      <h2>My Projects</h2>
+
+      <div class="section1" style="border: 3px solid black">
+        <p>
+          <strong>Name:</strong> Real-Time Human Pose Evaluation in Mobile
+          Devices
+        </p>
+        <video
+          src="video_sample.mp4"
+          width="400"
+          height="300"
+          poster="project.jpg"
+          controls
+          muted
+        ></video>
+      </div>
+
+      <div class="section2">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML, CSS, JavaScript</li>
+          <li>React & Node.js</li>
+          <li>MongoDB & Big Data Analytics</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="footer">
+      <p>&copy; 2025 Aziz Nasridinov. All Rights Reserved.</p>
+    </div>
+  </body>
+</html>
