@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Srting and Length</h2>
+
+    <p id = "output"></p>
+
+    <script>
+        var text = prompt("Enter a string");
+
+        if(text.length < 10){
+            document.getElementById("output").innerHTML = "text" + text + " is a" + "Weak Password";
+        }
+        else{
+            document.getElementById("output").innerHTML = "text" + text + " is a" + "Strong Password";
+        }
+
+    </script>
+</body>
+</html>

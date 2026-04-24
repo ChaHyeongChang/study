@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Length and Uppercase</title>
+</head>
+<body>
+    <h2>String Analyzer</h2>
+
+    <p id="output"></p>
+
+    <script>
+        var text = prompt("Enter a string:");
+
+
+        if(text.length <= 0){
+            document.getElementById("output").innerHTML = "Error";
+        }
+        else{
+            document.getElementById("output").innerHTML = "First letter: " + text.charAt(0);
+
+            document.getElementById("output").innerHTML = "Last letter: " + text.charAt(indexOf(text));
+
+            document.getElementById("output").innerHTML = "Uppercase: " + text.toUpperCase();
+
+            if(text.includes("JavaScript")){
+                document.getElementById("output").innerHTML = "Yes";
+            }
+            else{
+                document.getElementById("output").innerHTML = "No";
+            }
+
+
+        }
+        document.getElementById("output").innerHTML = result;
+        document.getElementById("output").innerHTML = "First" + text + " is a" + "Weak Password";
+    </script>
+</body>
+</html>

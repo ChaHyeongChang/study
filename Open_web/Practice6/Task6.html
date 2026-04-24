@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Playlist Manager</h2>
+
+    <script>
+        var songs = [];
+        songs.push(prompt("Enter 1st favorite song: "));
+        songs.push(prompt("Enter 2nd favorite song: "));
+        songs.push(prompt("Enter 3rd favorite song:"));
+
+        songs.sort();
+
+        alert("Your final list: " + songs.join(", "));
+    </script>
+</body>
+</html>

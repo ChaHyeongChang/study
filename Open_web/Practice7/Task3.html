@@ -1,0 +1,24 @@
+<h2>To-Do List</h2>
+
+<input type="text" id="task" placeholder="Write a task">
+<select id="priority">
+    <option>High</option>
+    <option>Medium</option>
+    <option>Low</option>
+</select>
+<button onclick="addTask()">Add</button>
+
+<ol id="taskList"></ol>
+
+
+
+<script>
+    function addTask(){
+        var input = document.getElementById('task').value;
+
+        var newTask = document.createElement('li');
+        newTask.innerHTML = input;
+        
+        document.getElementById('taskList').appendChild(newTask);
+    }
+</script>

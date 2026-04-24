@@ -1,0 +1,34 @@
+<h3>Simple Input Vaildation</h3>
+
+<p>Username:</p>
+<input type="password" id="Username" placeholder="Username"><br><br>
+<p>Email:</p>
+<input type="password" id="Email" placeholder="Email"><br><br>
+
+<button id="Sign Up" onclick="checkPasswords()">Sign Up</button>
+<p id="errorMsg" sytle="color: red;"></p>
+
+<script>
+    function checkPasswords() {
+        let Username = document.getElementById("Username").value;
+        let Email = document.getElementById("Email").value;
+
+        let errorMsg = "";
+
+
+        if (Username.length < 5) {
+            errorMsg += "Username must be at least 5 characters long.<br>";
+        } 
+        if (Email !== '@' || Email !== '.') {
+            errorMsg += "Email must contain '@' and '.'.<br>";
+        }
+
+        document.getElementById("errorMsg").innerHTML = errorMsg;
+
+
+        if (errorMsg === "") {
+            alert("Signing up successfully!");
+        }
+
+    }
+</script>

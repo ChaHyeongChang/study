@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Restaurant Order</h2>
+
+    <p id="output"></p>
+
+    <script>
+
+
+        var foods = ["Burger", "Pizza", "Salad", "Pasta"];
+        var prices = [12, 15, 10, 14];
+        var orderList = [];
+        var total = 0;
+
+        var menuText = "Menu:<br>";
+        for (var i = 0; i < foods.length; i++) {
+            menuText += foods[i] + " - $" + prices[i] + "<br>";
+        }
+
+        var order1 = prompt("Enter 1st menu (Burger, Pizza, Salad, Pasta):");
+        var order2 = prompt("Enter 2nd menu (Burger, Pizza, Salad, Pasta):");
+        
+        orderList.push(order1);
+        orderList.push(order2);
+
+        for(var i = 0; i < orderList.length; i++){
+            for(var j = 0; j <foods.length; j++){
+                if(orderList[i] == foods[j]){
+                    total = total + prices[j];
+                }
+            }
+        }
+
+        if(total > 20){
+            total = total - total * 0.1;
+        }
+
+        document.getElementById("output").innerHTML = menuText + "<br>" + "Your Order: " + orderList.join(", ") + "<br>" + "Total Price: $" + total;
+        
+
+    </script>
+</body>
+</html>
