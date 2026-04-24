@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Barnes and Noble</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            width: 80%;
+            margin: auto;
+        }
+
+        .top_box {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        .logo-area img {
+            height: 50px;
+            max-width: 100%;
+        }
+
+        .head_line {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .book {
+            border-bottom: 2px dotted gray;
+            padding: 25px;
+        }
+
+        .book img {
+            width: 280px;
+            height: 360px;
+            margin-top: 10px;
+        }
+
+        .coupon_box {
+            width: 300px;
+            background-color: lightblue;
+            border: 1px solid gray;
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .under_box {
+            background-color: lightblue;
+            text-align: right;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .navbar {
+            margin-bottom: 0px;
+        }
+
+        .navbar-nav li a {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="top_box">
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <div class="logo-area">
+                            <img src="logo.png" alt="Barnes & Noble Logo">
+                        </div>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="books.html">Books</a></li>
+                            <li><a href="gifts.html">Gifts</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+    <div class="head_line">
+        <p>The Best Bookstore Online</p>
+        <p>Over 6 million books ready for shipment within 24 hours and 4.5 million eBooks to download now.</p>
+    </div>
+
+    <hr>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-9 content">
+
+                <div class="book">
+                    <h2>The President Is Missing</h2>
+                    <p>
+                        Please join us in welcoming President Bill Clinton and the world's best-selling author James Patterson to
+                        celebrate the release of their new novel,
+                        The President Is Missing. A limited number of wristbands for the event will be distributed beginning at 9am
+                        the day of the event.
+                    </p>
+
+                    <img src="clinton.jpg" class="img-responsive center-block" alt="The president is missing book cover">
+                </div>
+
+                <div class="book">
+                    <h2>True Roots: A Mindful Kitchen with More Than 100 Recipes Free of Gluten, Dairy, and Refined Sugar</h2>
+                    <p>
+                        In her first book, Kristin Cavallari shared her personal journey along with her tips on
+                        everything from style to workouts, and beyond. With True Roots, Cavallari shows
+                        you that eating right can and should be fun, easy, and enjoyable. She learned the hard way
+                        that dieting leads nowhere good, and that a clean lifestyle is the ticket to feeling and
+                        being healthy.
+                    </p>
+
+                    <img src="roots.jpg" class="img-responsive center-block" alt="True Roots Book Cover">
+                </div>
+
+                <div class="book">
+                    <h2>Selling Boldly: Applying the New Science of Positive Psychology to Dramatically Increase Your
+                        Confidence, Happiness, and Sales</h2>
+                    <p>
+                        Fear is the reason most salespeople don’t like to pick up the phone. Fear is the
+                        reason we don’t ask for the business more, even though our customers want to buy from us.
+                    </p>
+
+                    <img src="selling.jpg" class="img-responsive center-block" alt="Selling Boldly Book Cover">
+                </div>
+
+                <div class="book">
+                    <h2>I’ve Got My Eyes on You (B&amp;N Exclusive Edition)</h2>
+                    <p>
+                        A new thriller from #1 New York Times bestselling author and “Queen of Suspense” Mary Higgins Clark.
+                        After a party when her parents are away, eighteen-year-old Kerry Dowling is found fully dressed
+                        at the bottom of the family pool. The immediate suspect is her boyfriend who had a bitter
+                        argument with her at the party. Then there is a twenty-year-old neighbor who was angry because
+                        she didn’t invite him to the party.
+                    </p>
+
+                    <img src="mary.jpg" class="img-responsive center-block" alt="I've Got My Eyes on You Book Cover">
+                </div>
+
+                <div class="feedback_section">
+                    <p>Send your feedback to us</p>
+
+                    <form>
+                        <textarea class="form-control" rows="8"></textarea><br>
+                        <input type="submit" value="Submit" class="btn btn-default">
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="col-sm-3">
+                <div class="coupon_box">
+                    <p>
+                        10% OFF $35+ | 15% OFF $60+
+                        <br>Use Code: HAPPYAPRIL
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="under_box">
+            <p>
+                Barnes &amp; Noble Booksellers, Inc., Legal Department
+                <br>122 Fifth Avenue
+                <br>New York, NY 10011
+                <br>Fax: (212) 463-5683
+            </p>
+            <br>
+            <p>Location: <a href="#">Click Map</a></p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
